@@ -1,4 +1,4 @@
-import Graph from "./Graph.js";
+import Graph from "./UnWeightedGraph.js";
 
 // recursive
 // The function should accept a starting node.
@@ -46,7 +46,7 @@ class Dfs extends Graph {
       this.flag[cur] = true;
       for (let i = 0; i < this.list[cur].length; i++) {
         const next = this.list[cur][i];
-        this.go(val + 1, next, [...arr, next]);
+        this.recursive(val + 1, next, [...arr, next]);
       }
       this.flag[cur] = false;
     }

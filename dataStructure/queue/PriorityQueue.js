@@ -1,10 +1,12 @@
 class PriorityQueue {
   array = [];
+  length = 0;
 
-  insert(value) {
+  enqueue(value) {
     this.array.push(value);
     const idx = this.bubbleUp(value);
     this.array[idx] = value;
+    this.length++;
   }
 
   bubbleUp(value) {
@@ -21,12 +23,13 @@ class PriorityQueue {
     return idx;
   }
 
-  extractFirst() {
-    const value = this.array.pop();
+  dequeue() {
     const first = this.array[0];
+    const value = this.array.pop();
 
     const idx = this.sinkDown(value);
     this.array[idx] = value;
+    this.length--;
 
     return first;
   }
@@ -40,7 +43,13 @@ class PriorityQueue {
       const childIdx2 = 2 * idx + 2;
       const child2 = this.array[childIdx2];
 
-      if (Math.min(child1.priority, child2.priority, value.priority) === value.priority || !child1) break;
+      if (!child1 || (child2 && Math.min(child1.priority, child2.priority, value.priority) === value.priority)) break;
+      if (!child2) {
+        if (Math.min(child1.priority, value.priority) === value.priority) break;
+        this.array[idx] = child1;
+        idx = childIdx1;
+        break;
+      }
 
       if (child1.priority > child2.priority) {
         this.array[idx] = child2;
@@ -49,21 +58,22 @@ class PriorityQueue {
         if (Math.min(child1.priority, value.priority) === value.priority) break;
         this.array[idx] = child1;
         idx = childIdx1;
-        if (!child2) break;
       }
     }
     return idx;
   }
 }
 
-const priorityQueue = new PriorityQueue();
+// const priorityQueue = new PriorityQueue();
 
-priorityQueue.insert({ val: "person1", priority: 41 });
-priorityQueue.insert({ val: "person2", priority: 11 });
-priorityQueue.insert({ val: "person2", priority: 12 });
-priorityQueue.insert({ val: "person2", priority: 10 });
-priorityQueue.insert({ val: "person2", priority: 11 });
+// priorityQueue.insert({ val: "person1", priority: 41 });
+// priorityQueue.insert({ val: "person2", priority: 11 });
+// priorityQueue.insert({ val: "person2", priority: 12 });
+// priorityQueue.insert({ val: "person2", priority: 10 });
+// priorityQueue.insert({ val: "person2", priority: 11 });
 
-console.log(priorityQueue.array);
-console.log(priorityQueue.extractFirst());
-console.log(priorityQueue.array);
+// console.log(priorityQueue.array);
+// console.log(priorityQueue.extractFirst());
+// console.log(priorityQueue.array);
+
+export default PriorityQueue;

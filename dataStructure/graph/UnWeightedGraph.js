@@ -7,7 +7,7 @@
 // adjacency matrix
 // adjacency list
 
-class Graph {
+class UnWeightedGraph {
   list = {};
 
   addVertex(key) {
@@ -47,4 +47,4 @@ class Graph {
 //visiting, undating, checking
 //
 
-export default Graph;
+export default UnWeightedGraph;
