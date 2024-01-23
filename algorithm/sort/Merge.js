@@ -1,8 +1,10 @@
-// 1948 Fon Neumann
+// 1948 Von Neumann
 // decomposing + merging + sorting
+// 특정 개수로 분해 후 비교하여 정렬한 후 합치는 방식의 정렬
 // time complexity : O(n * log n)
 
-let array = [5, 14, 20, 1, 2, 8, 5];
+const array = [5, 14, 20, 1, 2, 8, 5];
+// n은 배열을 decomposing 할 단위
 let n = 2;
 
 while (n / 2 < array.length) {
@@ -32,14 +34,14 @@ while (n / 2 < array.length) {
       }
     }
   }
+  // 정렬의 범위를 넓히기 위해 배로 증가시킴
   n = n * 2;
   array = tmp;
 }
 
 console.log(array);
 
-// 강의
-
+// 재귀를 이용해 선언적으로 변경
 const merge = (arr1, arr2) => {
   const result = [];
 
@@ -68,7 +70,6 @@ const merge = (arr1, arr2) => {
 
   return result;
 };
-
 const mergeSort = (arr) => {
   if (arr.length <= 1) return arr;
   const mid = Math.floor(arr.length / 2);

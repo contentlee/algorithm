@@ -1,5 +1,7 @@
 import Graph from "./UnWeightedGraph.js";
 
+// 깊이우선탐색(Depth First Search)
+
 // recursive
 // The function should accept a starting node.
 // Create a list to store the end result, to be returned at the very end.

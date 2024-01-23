@@ -2,6 +2,7 @@
 // 부모 요소 찾기 => (n-1)/2
 
 class MaxHeap {
+  // array는 tree 구조
   array;
 
   constructor(initArray = []) {
@@ -16,7 +17,7 @@ class MaxHeap {
   bubbleUp(value) {
     let idx = this.array.length - 1;
     while (idx > 0) {
-      const parentIdx = Math.floor((idx - 1) / 2);
+      const parentIdx = Math.floor(idx / 2);
       const parentValue = this.array[parentIdx];
       if (value <= parentValue) break;
       this.array[idx] = parentValue;
@@ -65,4 +66,7 @@ maxHeap.insert(11);
 
 console.log(maxHeap.array);
 console.log(maxHeap.extractMax());
+console.log(maxHeap.extractMax());
+console.log(maxHeap.extractMax());
+
 console.log(maxHeap.array);

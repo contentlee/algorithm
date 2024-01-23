@@ -13,7 +13,7 @@ class PriorityQueue {
     let idx = this.array.length - 1;
 
     while (idx > 0) {
-      const parentIdx = Math.floor((idx - 1) / 2);
+      const parentIdx = Math.floor(idx / 2);
       const parent = this.array[parentIdx];
       if (parent.priority < value.priority) break;
       this.array[idx] = parent;
@@ -64,16 +64,16 @@ class PriorityQueue {
   }
 }
 
-// const priorityQueue = new PriorityQueue();
+const priorityQueue = new PriorityQueue();
 
-// priorityQueue.insert({ val: "person1", priority: 41 });
-// priorityQueue.insert({ val: "person2", priority: 11 });
-// priorityQueue.insert({ val: "person2", priority: 12 });
-// priorityQueue.insert({ val: "person2", priority: 10 });
-// priorityQueue.insert({ val: "person2", priority: 11 });
+priorityQueue.enqueue({ val: "person1", priority: 41 });
+priorityQueue.enqueue({ val: "person2", priority: 11 });
+priorityQueue.enqueue({ val: "person2", priority: 12 });
+priorityQueue.enqueue({ val: "person2", priority: 10 });
+priorityQueue.enqueue({ val: "person2", priority: 11 });
 
-// console.log(priorityQueue.array);
-// console.log(priorityQueue.extractFirst());
-// console.log(priorityQueue.array);
+console.log(priorityQueue.array);
+console.log(priorityQueue.dequeue());
+console.log(priorityQueue.array);
 
 export default PriorityQueue;

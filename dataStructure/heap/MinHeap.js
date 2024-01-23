@@ -2,7 +2,9 @@
 // 자식 요소 찾기 : 2n+1 2n+2
 
 class MinHeap {
+  // array는 tree 구조
   array;
+
   constructor(initArray = []) {
     this.array = initArray;
   }
@@ -10,29 +12,26 @@ class MinHeap {
   insert(value) {
     this.array.push(value);
     const idx = this.bubbleUp(value);
-    this.array[idx] = value;
   }
 
   bubbleUp(value) {
     let idx = this.array.length - 1;
 
     while (idx > 0) {
-      const parentIdx = Math.floor((idx - 1) / 2);
+      const parentIdx = Math.floor(idx / 2);
       const parent = this.array[parentIdx];
       if (parent <= value) break;
       this.array[idx] = parent;
       idx = parentIdx;
     }
-
-    return idx;
+    this.array[idx] = value;
   }
 
   extractMin() {
     const min = this.array[0];
     const val = this.array.pop();
 
-    const idx = this.sinkDown(val);
-    this.array[idx] = val;
+    this.sinkDown(val);
 
     return min;
   }
@@ -58,16 +57,27 @@ class MinHeap {
         if (!child2) break;
       }
     }
-
-    return idx;
+    this.array[idx] = val;
   }
 }
 
 const minHeap = new MinHeap();
 
-minHeap.insert(41);
 minHeap.insert(11);
+minHeap.insert(10);
+minHeap.insert(14);
+minHeap.insert(11);
+minHeap.insert(12);
+minHeap.insert(16);
+minHeap.insert(17);
+minHeap.insert(41);
+minHeap.insert(42);
 
 console.log(minHeap.array);
 console.log(minHeap.extractMin());
+console.log(minHeap.extractMin());
+console.log(minHeap.extractMin());
+console.log(minHeap.extractMin());
+console.log(minHeap.extractMin());
+
 console.log(minHeap.array);

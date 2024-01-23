@@ -1,6 +1,6 @@
 import Tree from "./BinarySearchTree.js";
 
-class Dfs extends Tree {
+class Traversal extends Tree {
   constructor() {
     super();
   }
@@ -45,7 +45,7 @@ class Dfs extends Tree {
   }
 }
 
-const tree = new Dfs();
+const tree = new Traversal();
 tree.insert(8);
 tree.insert(4);
 tree.insert(5);

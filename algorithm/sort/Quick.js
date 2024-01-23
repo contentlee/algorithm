@@ -1,4 +1,5 @@
 // time complexity : O(n**2)
+// 특정 요소를 기준으로 분해 후 재결합하는 방식의 정렬
 
 let array = [5, 14, 20, 1, 2, 8, 5];
 
@@ -55,8 +56,7 @@ const sort = (arr) => {
   return [...sort(lower), standard, ...sort(large)];
 };
 
-// 강의
-
+// pivot ? 특정 계산을 수행하기 위한 임의의 알고리즘에 의해 먼저 선택된 행렬의 성분(항,원소)
 const pivot = (arr, start = 0, end = arr.length) => {
   let swapIdx = start;
   for (let i = start + 1; i < end + 1; i++) {

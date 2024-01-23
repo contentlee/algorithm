@@ -1,6 +1,8 @@
 import Graph from "./UnWeightedGraph.js";
 import Queue from "../queue/Queue.js";
 
+// 넓이우선탐색(Breadth First search)
+//
 class Bfs extends Graph {
   bfs(departure, arrive) {
     const queue = new Queue();

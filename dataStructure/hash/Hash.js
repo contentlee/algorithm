@@ -23,6 +23,7 @@ class HashTable {
     return total;
   }
 
+  // Separate Chaining
   get1(key) {
     const idx = this._hash(key);
     if (!this.keyMap[idx]) return undefined;
@@ -62,6 +63,7 @@ class HashTable {
     return res;
   }
 
+  // Linear Probing
   get2(key) {
     let idx = this._hash(key);
     if (!this.keyMap[idx]) return undefined;
